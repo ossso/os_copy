@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin version="php">
+<id>os_copy</id>
+<name>复制指定文本内容</name>
+<url>https://www.inull.cn</url>
+<note>一键复制指定文本内容，增加代码复制按钮</note>
+<description></description>
+<path>manage/base.php</path>
+<include>include.php</include>
+<level>1</level>
+<author>
+  <name>橙色阳光</name>
+  <email>1122@hizhou.cn</email>
+  <url>https://www.inull.cn</url>
+</author>
+<source>
+  <name></name>
+  <email></email>
+  <url></url>
+</source>
+<adapted>151935</adapted>
+<version>1.0</version>
+<pubdate>2019-05-31</pubdate>
+<modified>2019-05-31</modified>
+<price>0</price>
+<phpver>5.2</phpver>
+<advanced>
+  <dependency></dependency>
+  <rewritefunctions></rewritefunctions>
+  <existsfunctions></existsfunctions>
+  <conflict></conflict>
+</advanced>
+<sidebars>
+  <sidebar1></sidebar1>
+  <sidebar2></sidebar2>
+  <sidebar3></sidebar3>
+  <sidebar4></sidebar4>
+  <sidebar5></sidebar5>
+</sidebars>
+</plugin>

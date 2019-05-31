@@ -1,0 +1,103 @@
+.os-copy-mode {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+.os-copy-mode .os-copy-content {
+    margin-bottom: 10px;
+    padding: 20px;
+    color: #333;
+    background: #f5f5f5;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.os-copy-mode .os-copy-content *:last-child {
+    margin-bottom: 0;
+}
+.os-copy-mode.os-copy-content-center,
+.os-copy-mode.os-copy-content-center .os-copy-content,
+.os-copy-mode.os-copy-content-center .os-copy-content p {
+    text-align: center;
+}
+.os-copy-mode .os-copy-btn:active,
+.os-copy-mode .os-copy-btn:focus,
+.os-copy-mode .os-copy-btn:hover {
+    outline: 0;
+}
+.os-copy-mode .os-copy-btn[type-default] {
+    display: inline-block;
+    height: 32px;
+    padding: 0 15px;
+    line-height: 32px;
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    background: #3a6ea5;
+    cursor: pointer;
+}
+.os-copy-mode .os-copy-btn[color-black] {
+    background: #000000;
+}
+.os-copy-mode .os-copy-btn[color-pink] {
+    background: #ffc0cb;
+}
+.os-copy-mode .os-copy-btn[color-wennai] {
+    background: #ff6666;
+}
+.os-copy-mode .os-copy-btn[color-green] {
+    background: #66cc99;
+}
+.os-copy-mode .os-copy-btn[color-wechat] {
+    background: #44b549;
+}
+.os-copy-mode .os-copy-btn[type-default]:active {
+    -webkit-transform: scale(.9);    
+    -moz-transform: scale(.9);    
+    -m-transform: scale(.9);    
+    transform: scale(.9);    
+}
+.os-copy-mode .os-copy-btn[type-left],
+.os-copy-mode .os-copy-btn[type-right] {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    width: auto;
+    height: auto;
+    padding: 0 0.5em;
+    font-size: 0.9em;
+    color: black;
+    border: none;
+    border-radius: 0 0 0 5px;
+    text-shadow: none;
+    background-color: #CFCFCF;
+    z-index: 1;
+    cursor: pointer;
+}
+.os-copy-mode .os-copy-btn[type-left] {
+    right: auto;
+    left: 0;
+    border-radius: 0 0 5px 0;
+}
+
+.os-copy-copy-code-btn {
+    display: inline-block;
+    position: absolute;
+    bottom: auto;
+    left: auto;
+    top: 0;
+    width: auto;
+    height: auto;
+    padding: 0 0.5em;
+    font-size: 0.9em;
+    color: black;
+    border-radius: 0 0 5px 5px;
+    text-shadow: none;
+    background-color: #CFCFCF;
+    z-index: 1;
+    cursor: pointer;
+}
