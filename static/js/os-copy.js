@@ -1,8 +1,7 @@
 !function() {
 $('#os-copy-insert-script').remove();
-var $copyBtn = $('.os-copy-btn');
-$copyBtn.on('click', function() {
-    var $cont = $(this).prev('.os-copy-content');
+$('.os-copy-btn').on('click', function() {
+    var $cont = $(this).parents('.os-copy-mode').find('.os-copy-content');
     if (!$cont.length) return false;
     var text = $cont.get(0).innerText;
     if (text) {
@@ -13,6 +12,16 @@ $copyBtn.on('click', function() {
             alert('已复制到剪贴板');
         }
     }
+});
+$('.os-slide-btn').on('click', function() {
+    var $mode = $(this).parents('.os-copy-mode');
+    if (!$mode.length) return false;
+    if ($mode.hasClass('os-copy-mode-hide')) {
+        $(this).html('折叠');
+    } else {
+        $(this).html('展开');
+    }
+    $mode.toggleClass('os-copy-mode-hide');
 });
 if (window.osCopyEnablePreCode) {
     $(function() {

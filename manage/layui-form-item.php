@@ -21,6 +21,15 @@
                 }
             }
         break;
+        case 'input-checkbox':
+            foreach ($v[3] as $v2Key => $v2Val) {
+                if (is_array($v[4]) && in_array($v2Key, $v[4])) {
+                    echo '<input type="checkbox" name="'.$v[1].'['.$v2Key.']" lay-skin="primary" title="'.$v2Val.'" checked />';
+                } else {
+                    echo '<input type="checkbox" name="'.$v[1].'['.$v2Key.']" lay-skin="primary" title="'.$v2Val.'" />';
+                }
+            }
+        break;
         case 'textarea':
             echo '<textarea name="'.$v[1].'" placeholder="'.$v[3].'" class="layui-textarea">'.$v[4].'</textarea>';
         break;

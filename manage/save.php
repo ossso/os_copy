@@ -14,15 +14,39 @@ if ($type == "base") {
         "offArticleInsertCopy",
         "offArticleFooterCopy",
         "openPreCodeCopy",
-        "footer_btn_text",
-        "btn_text",
-        "btn_type",
-        "btn_footer_color",
-        "copyContentCenterType",
+        "copyContentBackground",
+        "footerBtnText",
+        "footerBtnType",
+        "footerBtnColor",
+        "showFooterSlideBtn",
+        "insertMultiBtnText",
+        "insertBtnType",
+        "insertBtnColor",
+        "showInsertSlideBtn",
+        "insertSingleBtnText",
+    );
+    /**
+     * 多选按钮
+     */
+    $params2 = array(
+        "copyContentCenter",
+        "copyBtnContentCenter",
     );
 
     foreach ($params as $v) {
         $zbp->Config('os_copy')->$v = GetVars($v, "POST");
+    }
+    foreach ($params2 as $v) {
+        $valList = GetVars($v, "POST");
+        if (is_array($valList)) {
+            $array = array();
+            foreach ($valList as $key => $val) {
+                if ($val == 'on') {
+                    array_push($array, $key);
+                }
+            }
+            $zbp->Config('os_copy')->$v = $array;
+        }
     }
     $zbp->SaveConfig('os_copy');
 
