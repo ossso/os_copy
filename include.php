@@ -30,7 +30,7 @@ function os_copy_ViewPost_Template() {
     /**
      * 插入样式与脚本
      */
-    $insertList = array($zbp->host . 'zb_users/plugin/os_copy/static/js/os-copy.min.js');
+    $insertList = array($zbp->host . 'zb_users/plugin/os_copy/static/js/os-copy.min.js?t=20190601');
     if (!$zbp->Config('os_copy')->offClipboardJS == '1') {
         array_push($insertList, $zbp->host . 'zb_users/plugin/os_copy/static/libs/clipboard/clipboard-polyfill.js');
     }

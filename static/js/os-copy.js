@@ -5,7 +5,9 @@ $('.os-copy-btn').on('click', function() {
     if (!$cont.length) return false;
     var text = $cont.get(0).innerText;
     if (text) {
-        clipboard.writeText(text);
+        var dt = new clipboard.DT();
+        dt.setData('text/plain', text);
+        clipboard.write(dt);
         try {
             layer.msg('已复制到剪贴板');
         } catch (e) {
