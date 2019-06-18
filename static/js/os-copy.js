@@ -4,6 +4,7 @@ $('.os-copy-btn').on('click', function() {
     var $cont = $(this).parents('.os-copy-mode').find('.os-copy-content');
     if (!$cont.length) return false;
     var text = $cont.get(0).innerText;
+    text = $.trim(text);
     if (text) {
         var dt = new clipboard.DT();
         dt.setData('text/plain', text);
@@ -37,7 +38,9 @@ if (window.osCopyEnablePreCode) {
             .on('click', function() {
                 var key = $(this).attr('data-code-key');
                 var $codeElem = $('.prism-highlight[data-code-index="' + key + '"]');
-                clipboard.writeText($codeElem.text());
+                var cont = $codeElem.text();
+                cont = $.trim(cont);
+                clipboard.writeText(cont);
                 layer.msg('已复制到剪贴板');
             });
         });
