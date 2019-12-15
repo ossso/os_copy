@@ -24,6 +24,8 @@ if ($type == "base") {
         "insertBtnColor",
         "showInsertSlideBtn",
         "insertSingleBtnText",
+        "offClipboardJS",
+        "offLayerJS",
     );
     /**
      * 多选按钮
