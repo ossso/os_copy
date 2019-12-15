@@ -15,6 +15,10 @@ function UninstallPlugin_os_copy() {}
  */
 function os_copy_ViewPost_Template() {
     global $zbp;
+    if (!array_key_exists('article', $zbp->template->templateTags)) {
+        return null;
+    }
+
     $article = $zbp->template->templateTags['article'];
     $article->Content = os_copy_HTMLZip($article->Content);
 
