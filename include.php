@@ -35,7 +35,8 @@ function os_copy_ViewPost_Template() {
     /**
      * 插入样式与脚本
      */
-    $insertList = array($zbp->host . 'zb_users/plugin/os_copy/static/js/os-copy.min.js?t=20190618');
+    $insertList = array($zbp->host . 'zb_users/plugin/os_copy/static/js/os-copy.min.js?t=20200406');
+    // $insertList = array($zbp->host . 'zb_users/plugin/os_copy/static/js/os-copy.js');
     if (!$zbp->Config('os_copy')->offClipboardJS == '1') {
         array_push($insertList, $zbp->host . 'zb_users/plugin/os_copy/static/libs/clipboard/clipboard-polyfill.js');
     }
@@ -49,6 +50,12 @@ function os_copy_ViewPost_Template() {
     $openPreCodeCopyBtn = '';
     if ($zbp->Config('os_copy')->openPreCodeCopy == '1') {
         $openPreCodeCopyBtn = 'window.osCopyEnablePreCode = true;';
+    }
+    $hidePreCodeName = '';
+    if ($zbp->Config('os_copy')->hidePreCodeName == '1') {
+        $hidePreCodeName = 'window.osCopyhidePreCodeName = true;';
+        $header = &$zbp->template->templateTags['header'];
+        $header .= '<style>div[data-language] { display: none !important;}</style>';
     }
     $htmlCode .= '
     <script id="os-copy-insert-script">
@@ -66,6 +73,7 @@ function os_copy_ViewPost_Template() {
         }
         ' . $insertJS . '
         ' . $openPreCodeCopyBtn . '
+        ' . $hidePreCodeName . '
     }();
     </script>';
     $article->Content .= $htmlCode;
@@ -246,8 +254,10 @@ function os_copy_Edit_Response() {
 function os_copy_Edit_Response3() {
     global $zbp, $article;
     if ($zbp->Config('os_copy')->offArticleInsertCopy != '1') {
-        echo '<input class="button" style="width: 180px; height: 38px;" type="button" value="插入多行复制块" id="os-copy-insert-multi">';
-        echo '<input class="button" style="width: 180px; height: 38px;" type="button" value="插入单行复制块" id="os-copy-insert-single">';
+        echo '<div>';
+        echo '<input class="button" style="width: 88px; height: 30px; padding: 0; line-height: 30px; font-size: 14px;" type="button" value="多行复制块" id="os-copy-insert-multi">';
+        echo '<input class="button" style="width: 88px; height: 30px; padding: 0; margin-left: 4px; line-height: 30px; font-size: 14px;" type="button" value="单行复制块" id="os-copy-insert-single">';
+        echo '</div>';
         echo '
         <script>
         $(function() {
@@ -326,7 +336,7 @@ function os_copy_HTMLZip($html_source) {
             }
         }
 
-        $c = preg_replace('/[\\n\\r\\t]+/', ' ', $c); // 清除换行符，清除制表符
+        $c = preg_replace('/[\\n\\r]+/', ' ', $c); // 清除换行符，清除制表符
         $c = preg_replace('/\\s{2,}/', ' ', $c); // 清除额外的空格
         $c = preg_replace('/>\\s</', '> <', $c); // 清除标签间的空格
         $c = preg_replace('/\\/\\*.*?\\*\\//i', '', $c); // 清除 CSS & JS 的注释

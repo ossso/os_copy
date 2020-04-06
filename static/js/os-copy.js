@@ -1,11 +1,15 @@
 !function() {
+var transformHtml = function(str) {
+    return str.replace(/\u00a0/g, ' ');
+}
 $('#os-copy-insert-script').remove();
 $('.os-copy-btn').on('click', function() {
     var $cont = $(this).parents('.os-copy-mode').find('.os-copy-content');
     if (!$cont.length) return false;
     var text = $cont.get(0).innerText;
-    text = $.trim(text);
     if (text) {
+        console.log(text.charCodeAt(0))
+        text = transformHtml(text);
         var dt = new clipboard.DT();
         dt.setData('text/plain', text);
         clipboard.write(dt);
@@ -32,17 +36,23 @@ if (window.osCopyEnablePreCode) {
         $elems.each(function(index) {
             $(this).attr('data-code-index', index);
             var $showElem = $(this).prev('.prism-show-language');
-            $('<span class="os-copy-copy-code-btn">复制</span>').appendTo($showElem)
+            var $btn = $('<span class="os-copy-copy-code-btn">复制</span>').appendTo($showElem)
             .attr('data-code-key', index)
-            .css('right', $showElem.find('.prism-show-language-label').width() + 20)
             .on('click', function() {
                 var key = $(this).attr('data-code-key');
                 var $codeElem = $('.prism-highlight[data-code-index="' + key + '"]');
                 var cont = $codeElem.text();
-                cont = $.trim(cont);
-                clipboard.writeText(cont);
+                cont = transformHtml(cont);
+                var dt = new clipboard.DT();
+                dt.setData('text/plain', cont);
+                clipboard.write(dt);
                 layer.msg('已复制到剪贴板');
             });
+            if (window.osCopyhidePreCodeName) {
+                $btn.css('right', 0)
+            } else {
+                $btn.css('right', $showElem.find('.prism-show-language-label').width() + 20)
+            }
         });
     });
 }

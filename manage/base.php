@@ -13,6 +13,7 @@ $form_list = array(
     array('input-switch', 'offArticleInsertCopy', '关闭插入复制块按钮', ''),
     array('input-switch', 'offArticleFooterCopy', '关闭底部复制块功能', ''),
     array('input-switch', 'openPreCodeCopy', '开启代码块复制功能', ''),
+    array('input-switch', 'hidePreCodeName', '隐藏代码块代码名称', ''),
     array('input-text', 'copyContentBackground', '复制内容块的背景色', '留空为默认“#f5f5f5”'),
     array('input-text', 'footerBtnText', '文章底部复制块按钮', '留空为默认“复制”'),
     array('select', 'footerBtnType', '底部复制块按钮类型', array(
@@ -124,6 +125,7 @@ layui.use(['form', 'layer'], function() {
         data.offArticleInsertCopy = typeof data.offArticleInsertCopy === 'undefined' ? '0' : '1';
         data.offArticleFooterCopy = typeof data.offArticleFooterCopy === 'undefined' ? '0' : '1';
         data.openPreCodeCopy = typeof data.openPreCodeCopy === 'undefined' ? '0' : '1';
+        data.hidePreCodeName = typeof data.hidePreCodeName === 'undefined' ? '0' : '1';
         data.showFooterSlideBtn = typeof data.showFooterSlideBtn === 'undefined' ? '0' : '1';
         data.showInsertSlideBtn = typeof data.showInsertSlideBtn === 'undefined' ? '0' : '1';
         layer.load(2, {

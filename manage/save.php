@@ -14,6 +14,7 @@ if ($type == "base") {
         "offArticleInsertCopy",
         "offArticleFooterCopy",
         "openPreCodeCopy",
+        "hidePreCodeName",
         "copyContentBackground",
         "footerBtnText",
         "footerBtnType",
